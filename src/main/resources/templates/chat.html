@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat with GPT</title>
+    <style>
+        /* スタイルシートの簡単な設定 */
+        .chat-container {
+            width: 50%;
+            margin: auto;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <h2>Chat with GPT</h2>
+    <!-- チャットメッセージ送信フォーム -->
+    <form th:action="@{/chat}" method="post">
+		<label for="role" >演じてほしいキャラクター</label>
+		<input type="text" name="role" th:value="${role}"><br><br>
+        <label for="message">Your Message:</label><br>
+        <textarea cols="45" id="message" name="message" required></textarea><br>
+        <button type="submit" >送信</button>
+    </form>
+    <br>
+    <div>
+        <strong>GPT Response:</strong>
+        <!-- GPTのレスポンスを表示 -->
+        <p th:text="${chatGptResponse}"></p>
+    </div>
+</div>
+</body>
